@@ -5,9 +5,6 @@
   <vendor email="daniel@espendiller.net" url="http://www.espend.de">Daniel Espendiller</vendor>
 
   <description>Extends support generic type and function</description>
-
-  <change-notes></change-notes>
-
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
   <idea-version since-build="173.0"/>
 
@@ -17,8 +14,22 @@
   <depends>com.intellij.modules.lang</depends>
   -->
 
+  <extensions defaultExtensionNs="com.jetbrains.php">
+    <typeProvider4 implementation="de.espend.idea.php.generics.type.ReturnTypeProvider"/>
+  </extensions>
+
   <extensions defaultExtensionNs="com.intellij">
     <fileBasedIndex implementation="de.espend.idea.php.generics.indexer.TemplateAnnotationIndex"/>
+
+    <localInspection shortName="PhpStanInspectionValidationInspection" displayName="PHPStan validation" groupPath="PHP" groupName="Quality tools"
+                     enabledByDefault="true" level="WEAK WARNING" cleanupTool="true"
+                     implementationClass="de.espend.idea.php.generics.inspection.PhpStanInspection"/>
+
+
+
+    <localInspection implementationClass="de.espend.idea.php.generics.inspection.ParameterInspection"
+                     displayName="sdasd"/>
+
   </extensions>
 
   <actions>
